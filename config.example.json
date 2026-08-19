@@ -6,11 +6,11 @@
     "description": "Offizielle Community-Plattform der Familie Kynx"
   },
   "discord": {
-    "clientId": "DEINE_DISCORD_CLIENT_ID",
-    "clientSecret": "DEIN_DISCORD_CLIENT_SECRET",
-    "botToken": "DEIN_BOT_TOKEN",
-    "guildId": "DEINE_DISCORD_SERVER_ID",
-    "requiredRoleId": "DEINE_ROLLEN_ID",
+    "clientId": "1539691275551514704",
+    "clientSecret": "3l4VTJag8qJ6VDE5Aks0toz8-BEXkm6l",
+    "botToken": "MTUzOTY5MTI3NTU1MTUxNDcwNA.GboPY0.Wsb-EpF8hx0vStwxqkp5a5igMyVwUv5WBgRivQ",
+    "guildId": "1539691759334985868",
+    "requiredRoleId": "1539691791496904774",
     "redirectUri": "http://localhost:3000/auth/callback",
     "scopes": ["identify", "guilds"]
   },
