@@ -11,7 +11,7 @@
     "botToken": "MTUzOTY5MTI3NTU1MTUxNDcwNA.GboPY0.Wsb-EpF8hx0vStwxqkp5a5igMyVwUv5WBgRivQ",
     "guildId": "1539691759334985868",
     "requiredRoleId": "1539691791496904774",
-    "redirectUri": "http://localhost:3000/auth/callback",
+    "redirectUri": "https://kynxfamdashboard-production.up.railway.app/auth/callback",
     "scopes": ["identify", "guilds"]
   },
   "server": {
