@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kynx | Discord Verifizierung</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+    <div class="bg-overlay"></div>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h1>Familie <span>Kynx</span></h1>
+                <p class="subtitle">Grand RP DE03 · Community Panel</p>
+            </div>
+
+            <div id="errorBox" class="error-box hidden">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p id="errorText"></p>
+            </div>
+
+            <div class="info-box">
+                <i class="fas fa-shield-alt"></i>
+                <p>
+                    Zugang nur für Mitglieder des offiziellen Discord-Servers
+                    mit der erforderlichen Rolle. Nach dem Login prüft das System
+                    automatisch deine Server-Mitgliedschaft und Rolle.
+                </p>
+            </div>
+
+            <a href="/auth/login" class="discord-btn" id="loginBtn">
+                <i class="fab fa-discord"></i>
+                Mit Discord verbinden
+            </a>
+
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-gavel"></i>
+                    <span>Sanktionskatalog</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Einstellungstest</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <span>Kynx Panel</span>
+                </div>
+            </div>
+
+            <p class="footer-text">
+                Nur für autorisierte Kynx-Mitglieder · Grand RP DE03<br>
+                Discord OAuth2 · Rollen-geschützt
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const error = params.get('error');
+        const messages = {
+            not_in_server: 'Du bist nicht auf dem erforderlichen Discord-Server. Tritt zuerst dem Server bei und versuche es erneut.',
+            missing_role: 'Dir fehlt die erforderliche Rolle, um auf dieses Panel zuzugreifen. Wende dich an die Familienleitung.',
+            oauth_failed: 'Discord-Anmeldung fehlgeschlagen. Bitte erneut versuchen.',
+            invalid_state: 'Ungültige Sitzung. Bitte erneut anmelden.',
+            login_required: 'Bitte melde dich zuerst mit Discord an.',
+            access_denied: 'Zugriff von Discord verweigert.'
+        };
+        if (error) {
+            const box = document.getElementById('errorBox');
+            document.getElementById('errorText').textContent = messages[error] || ('Fehler: ' + error);
+            box.classList.remove('hidden');
+        }
+
+        // Bereits eingeloggt?
+        fetch('/api/me').then(r => {
+            if (r.ok) window.location.href = '/dashboard.html';
+        }).catch(() => {});
+    </script>
+</body>
+</html>

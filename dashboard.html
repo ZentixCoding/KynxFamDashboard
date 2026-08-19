@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kynx Panel</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-icon small"><i class="fas fa-crown"></i></div>
+    <h2>Familie <span>Kynx</span></h2>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="#" class="nav-item active" data-section="overview"><i class="fas fa-home"></i><span>Übersicht</span></a>
+    <a href="#" class="nav-item" data-section="members"><i class="fas fa-users"></i><span>Mitglieder</span></a>
+    <a href="#" class="nav-item" data-section="sanktionen"><i class="fas fa-gavel"></i><span>Sanktionskatalog</span></a>
+    <a href="#" class="nav-item" data-section="test"><i class="fas fa-clipboard-check"></i><span>Einstellungstest</span></a>
+    <a href="#" class="nav-item" data-section="tests-history"><i class="fas fa-history"></i><span>Test-Historie</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="user-card">
+      <img src="" alt="" id="userAvatar" class="user-avatar">
+      <div class="user-info"><span id="userName">…</span><span id="userTag" class="user-tag"></span></div>
+    </div>
+    <a href="/auth/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Ausloggen</a>
+  </div>
+</div>
+
+<div class="main-content">
+  <header class="topbar">
+    <button id="menuToggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
+    <h1 id="pageTitle">Übersicht</h1>
+    <span class="server-badge"><span class="status-dot online"></span> Kynx · DE03</span>
+  </header>
+
+  <section id="overview" class="content-section active">
+    <div class="welcome-banner">
+      <div>
+        <h2>Willkommen, <span id="welcomeName">…</span>!</h2>
+        <p>Familie <strong>Kynx</strong> · Grand RP DE03</p>
+      </div>
+      <i class="fas fa-crown"></i>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon purple"><i class="fas fa-users"></i></div><div class="stat-info"><span class="stat-value" id="statMembers">0</span><span class="stat-label">Mitglieder</span></div></div>
+      <div class="stat-card"><div class="stat-icon green"><i class="fas fa-user-check"></i></div><div class="stat-info"><span class="stat-value" id="statActive">0</span><span class="stat-label">Aktiv / Probezeit</span></div></div>
+      <div class="stat-card"><div class="stat-icon orange"><i class="fas fa-user-slash"></i></div><div class="stat-info"><span class="stat-value" id="statSusp">0</span><span class="stat-label">Suspendiert</span></div></div>
+      <div class="stat-card"><div class="stat-icon blue"><i class="fas fa-clipboard-check"></i></div><div class="stat-info"><span class="stat-value" id="statTests">0</span><span class="stat-label">Tests</span></div></div>
+    </div>
+    <div class="quick-links">
+      <h3>Schnellzugriff</h3>
+      <div class="links-grid">
+        <button class="quick-btn" data-section="members"><i class="fas fa-users"></i> Mitglieder</button>
+        <button class="quick-btn" data-section="test"><i class="fas fa-clipboard-check"></i> Einstellungstest</button>
+        <button class="quick-btn" data-section="sanktionen"><i class="fas fa-gavel"></i> Sanktionen</button>
+        <button class="quick-btn" id="btnNewMember"><i class="fas fa-user-plus"></i> Mitglied einstellen</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="members" class="content-section">
+    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+      <div>
+        <h2><i class="fas fa-users"></i> Mitgliederliste</h2>
+        <p>Ränge, Telefon, Discord-ID, Status und persönliche Sanktionen.</p>
+      </div>
+      <button class="primary-btn" id="btnAddMember"><i class="fas fa-user-plus"></i> Einstellen</button>
+    </div>
+    <div class="filter-bar">
+      <input type="text" id="searchMember" placeholder="Suche Name, Telefon, Discord…">
+      <select id="filterStatus"><option value="all">Alle Status</option></select>
+      <select id="filterRang"><option value="all">Alle Ränge</option></select>
+    </div>
+    <div id="membersList" class="members-list"></div>
+  </section>
+
+  <section id="sanktionen" class="content-section">
+    <div class="section-header">
+      <h2><i class="fas fa-gavel"></i> Familien-Sanktionskatalog</h2>
+      <p>Interne Regeln der Familie Kynx. Anpassbar in <code>config.json</code>.</p>
+    </div>
+    <div class="filter-bar">
+      <input type="text" id="searchSanktion" placeholder="Suche…">
+      <select id="filterKategorie">
+        <option value="all">Alle</option>
+        <option value="aktivitaet">Aktivität</option>
+        <option value="verhalten">Verhalten</option>
+        <option value="sicherheit">Sicherheit</option>
+        <option value="rp">RP</option>
+      </select>
+    </div>
+    <div class="table-container">
+      <table class="sanktion-table" id="sanktionTable">
+        <thead><tr><th>Verstoß</th><th>Kategorie</th><th>1. Mal</th><th>2. Mal</th><th>3. Mal</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="test" class="content-section">
+    <div class="section-header">
+      <h2><i class="fas fa-clipboard-check"></i> Einstellungstest</h2>
+      <p>Fragen <strong>IC</strong> stellen → hier nur <span class="tag-richtig">Richtig</span> / <span class="tag-falsch">Falsch</span> markieren. Bei Bestehen danach unter <strong>Mitglieder → Einstellen</strong> die Daten eintragen.</p>
+    </div>
+    <div id="fragenList" class="fragen-list"></div>
+    <div class="test-actions">
+      <div class="live-score">Bewertet: <strong id="liveBewertet">0</strong>/<span id="liveGesamt">0</span> · Richtig: <strong id="liveRichtig">0</strong> · <span id="liveProzent">0%</span> · Grenze: <span id="minBestehenLabel">70%</span></div>
+      <button id="submitTestBtn" class="primary-btn"><i class="fas fa-save"></i> Ergebnis speichern</button>
+    </div>
+  </section>
+
+  <section id="tests-history" class="content-section">
+    <div class="section-header"><h2><i class="fas fa-history"></i> Test-Historie</h2></div>
+    <div id="historyList" class="history-list"><p class="muted">Noch keine Tests.</p></div>
+  </section>
+</div>
+
+<!-- Member Modal -->
+<div id="memberModal" class="modal hidden">
+  <div class="modal-content modal-wide">
+    <button class="modal-close" data-close="memberModal">&times;</button>
+    <h2 id="memberModalTitle">Mitglied einstellen</h2>
+    <form id="memberForm">
+      <input type="hidden" id="mId">
+      <div class="form-section-title">Persönliche Daten</div>
+      <div class="form-row">
+        <div class="form-group"><label>Vorname *</label><input id="mVorname" required placeholder="Paul"></div>
+        <div class="form-group"><label>Nachname *</label><input id="mNachname" required placeholder="Nakamura"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Telefon</label><input id="mTelefon" placeholder="77-77-777"></div>
+        <div class="form-group"><label>Eingestellt am</label><input type="date" id="mDatum"></div>
+      </div>
+      <div class="form-section-title">Rang & Status</div>
+      <div class="form-row">
+        <div class="form-group"><label>Rang</label><select id="mRang"></select></div>
+        <div class="form-group"><label>Status</label><select id="mStatus"></select></div>
+      </div>
+      <div class="form-section-title">Discord</div>
+      <div class="form-row">
+        <div class="form-group"><label>Discord Name</label><input id="mDiscordName" placeholder="username"></div>
+        <div class="form-group"><label>Discord ID</label><input id="mDiscordId" placeholder="123456789012345678"></div>
+      </div>
+      <div class="form-section-title">Sonstiges</div>
+      <div class="form-group"><label>Notizen</label><textarea id="mNotizen" rows="2" placeholder="Optionale Notizen…"></textarea></div>
+      <button type="submit" class="primary-btn"><i class="fas fa-save"></i> Speichern</button>
+    </form>
+  </div>
+</div>
+
+<!-- Detail Modal -->
+<div id="detailModal" class="modal hidden">
+  <div class="modal-content modal-wide">
+    <button class="modal-close" data-close="detailModal">&times;</button>
+    <div id="detailBody"></div>
+  </div>
+</div>
+
+<!-- Sanktion Modal -->
+<div id="sanktionModal" class="modal hidden">
+  <div class="modal-content">
+    <button class="modal-close" data-close="sanktionModal">&times;</button>
+    <h2>Sanktion verhängen</h2>
+    <input type="hidden" id="sMemberId">
+    <div class="form-group"><label>Verstoß</label><select id="sVerstoss"></select></div>
+    <div class="form-group"><label>Strafe</label><input id="sStrafe" placeholder="z.B. Verwarnung"></div>
+    <div class="form-group"><label>Grund / Notiz</label><textarea id="sGrund" rows="2"></textarea></div>
+    <div class="form-group"><label>Datum</label><input type="date" id="sDatum"></div>
+    <button class="primary-btn" id="sSubmit" style="margin-top:12px"><i class="fas fa-gavel"></i> Verhängen</button>
+  </div>
+</div>
+
+<script src="/dashboard.js"></script>
+</body>
+</html>

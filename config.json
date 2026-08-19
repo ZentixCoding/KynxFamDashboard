@@ -1,0 +1,64 @@
+{
+  "family": {
+    "name": "Kynx",
+    "tag": "KYNX",
+    "server": "Grand RP DE03",
+    "description": "Offizielle Community-Plattform der Familie Kynx"
+  },
+  "discord": {
+    "clientId": "DEINE_DISCORD_CLIENT_ID",
+    "clientSecret": "DEIN_DISCORD_CLIENT_SECRET",
+    "botToken": "DEIN_BOT_TOKEN",
+    "guildId": "DEINE_DISCORD_SERVER_ID",
+    "requiredRoleId": "DEINE_ROLLEN_ID",
+    "redirectUri": "http://localhost:3000/auth/callback",
+    "scopes": ["identify", "guilds"]
+  },
+  "server": {
+    "port": 3000,
+    "sessionSecret": "aendere-dieses-geheime-passwort-sofort"
+  },
+  "raenge": [
+    "Boss",
+    "Underboss",
+    "Consigliere",
+    "Capo",
+    "Lieutenant",
+    "Sergeant",
+    "Soldier",
+    "Enforcer",
+    "Associate",
+    "Prospect",
+    "Recruit"
+  ],
+  "statusOptionen": ["Eingestellt", "Probezeit", "Suspendiert", "Gekündigt"],
+  "sanktionen": [
+    { "verstoß": "Nicht Anfahren von Events", "kategorie": "aktivitaet", "erst": "Mündliche Verwarnung", "zweit": "Schriftliche Verwarnung", "dritt": "Suspendierung 3–7 Tage" },
+    { "verstoß": "Unentschuldigtes Fehlen", "kategorie": "aktivitaet", "erst": "Verwarnung", "zweit": "Suspendierung 1–3 Tage", "dritt": "Rang-Abzug / Kündigung" },
+    { "verstoß": "Respektloses Verhalten (intern)", "kategorie": "verhalten", "erst": "Verwarnung", "zweit": "Suspendierung 3 Tage", "dritt": "Rang-Abzug" },
+    { "verstoß": "Respektloses Verhalten (extern / Allianz)", "kategorie": "verhalten", "erst": "Schriftliche Verwarnung", "zweit": "Suspendierung 7 Tage", "dritt": "Kündigung" },
+    { "verstoß": "Befehle der Führung ignorieren", "kategorie": "verhalten", "erst": "Verwarnung", "zweit": "Suspendierung 3–7 Tage", "dritt": "Rang-Abzug / Kündigung" },
+    { "verstoß": "Internes Drama / OOC-Streit", "kategorie": "verhalten", "erst": "Gespräch + Verwarnung", "zweit": "Suspendierung", "dritt": "Kündigung" },
+    { "verstoß": "Familien-Infos weitergegeben", "kategorie": "sicherheit", "erst": "Suspendierung + Rang-Abzug", "zweit": "Kündigung", "dritt": "Blacklist" },
+    { "verstoß": "Metagaming zum Nachteil der Familie", "kategorie": "sicherheit", "erst": "Verwarnung / Suspendierung", "zweit": "Rang-Abzug", "dritt": "Kündigung" },
+    { "verstoß": "Schlechtes RP in Familien-Situationen", "kategorie": "rp", "erst": "Feedback + Verwarnung", "zweit": "Suspendierung Events", "dritt": "Rang-Abzug" },
+    { "verstoß": "Power-RP / Fail-RP in Familienaktionen", "kategorie": "rp", "erst": "Verwarnung", "zweit": "Suspendierung 3 Tage", "dritt": "Rang-Abzug" },
+    { "verstoß": "Keine Rückmeldung bei Anfragen der Führung", "kategorie": "aktivitaet", "erst": "Erinnerung", "zweit": "Verwarnung", "dritt": "Suspendierung" },
+    { "verstoß": "Private Deals ohne Absprache", "kategorie": "sicherheit", "erst": "Verwarnung", "zweit": "Suspendierung + Gespräch", "dritt": "Kündigung" },
+    { "verstoß": "Toxisches Verhalten im Family-Discord", "kategorie": "verhalten", "erst": "Mute / Verwarnung", "zweit": "Suspendierung", "dritt": "Kündigung" },
+    { "verstoß": "Mehrfach zu spät / unzuverlässig", "kategorie": "aktivitaet", "erst": "Verwarnung", "zweit": "Event-Sperre", "dritt": "Suspendierung" }
+  ],
+  "einstellungstest": {
+    "minBestehen": 70,
+    "fragen": [
+      { "id": 1, "frage": "Was bedeutet IC und OOC? Erkläre den Unterschied.", "hinweis": "Muss klar trennen können." },
+      { "id": 2, "frage": "Was ist Metagaming und warum ist es für die Familie problematisch?", "hinweis": "OOC-Infos im IC." },
+      { "id": 3, "frage": "Wie verhältst du dich, wenn die Führung einen Befehl gibt, den du nicht verstehst?", "hinweis": "Nachfragen, nicht ignorieren." },
+      { "id": 4, "frage": "Warum willst du der Familie Kynx beitreten?", "hinweis": "Motivation prüfen." },
+      { "id": 5, "frage": "Was machst du, wenn du ein Event nicht wahrnehmen kannst?", "hinweis": "Frühzeitig absagen." },
+      { "id": 6, "frage": "Wie gehst du mit Konflikten innerhalb der Familie um?", "hinweis": "Intern, IC, Hierarchie." },
+      { "id": 7, "frage": "Bist du bereit, regelmäßig an Events teilzunehmen?", "hinweis": "Verfügbarkeit." },
+      { "id": 8, "frage": "Was bedeutet Loyalität zur Familie für dich?", "hinweis": "Keine Infos nach außen." }
+    ]
+  }
+}
